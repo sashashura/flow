@@ -7,8 +7,12 @@ import java.util.stream.Collectors;
 
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.logging.Logs;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
@@ -41,6 +45,17 @@ public abstract class AbstractSpringTest extends ChromeBrowserTest {
         } else {
             return "";
         }
+    }
+
+    @Before
+    @Override
+    public void setup() throws Exception {
+        DesiredCapabilities capabilities = getDesiredCapabilities();
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.PERFORMANCE, java.util.logging.Level.ALL);
+        capabilities.setCapability("goog:loggingPrefs", logPrefs);
+        setDesiredCapabilities(capabilities);
+        super.setup();
     }
 
     @After
