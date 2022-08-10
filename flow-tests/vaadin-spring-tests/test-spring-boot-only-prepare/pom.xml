@@ -135,6 +135,7 @@
                     <jvmArguments>
                         -Dvaadin.devmode.vite.options=${vaadin.devmode.vite.options}
                         -Dvaadin.eagerServerLoad=${vaadin.eagerServerLoad}
+                        -Dvaadin.devmode.liveReload.enabled=${vaadin.devmode.liveReload.enabled}
                     </jvmArguments>
                 </configuration>
                 <executions>
