@@ -6,7 +6,9 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 
 import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.Logs;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
@@ -43,8 +45,10 @@ public abstract class AbstractSpringTest extends ChromeBrowserTest {
 
     @After
     public void dumpBrowserConsoleLogs() {
-        System.out.println(getLogEntries(java.util.logging.Level.ALL).stream()
-                .map(LogEntry::toString)
+        Logs logs = driver.manage().logs();
+        System.out.println(logs.getAvailableLogTypes().stream()
+                .flatMap(logType -> logs.get(logType).getAll().stream()
+                        .map(LogEntry::toString))
                 .collect(Collectors.joining("\n",
                         "===============================  DUMP Browser logs:\n",
                         "\n\n")));
