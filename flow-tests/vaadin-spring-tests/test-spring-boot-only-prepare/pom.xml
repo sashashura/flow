@@ -134,6 +134,7 @@
                     <wait>2500</wait>
                     <jvmArguments>
                         -Dvaadin.devmode.vite.options=${vaadin.devmode.vite.options}
+                        -Dvaadin.eagerServerLoad=${vaadin.eagerServerLoad}
                     </jvmArguments>
                 </configuration>
                 <executions>
