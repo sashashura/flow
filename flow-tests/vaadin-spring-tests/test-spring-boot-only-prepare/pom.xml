@@ -97,6 +97,9 @@
                         <goals>
                             <goal>prepare-frontend</goal>
                         </goals>
+                        <configuration>
+                            <pnpmEnable>false</pnpmEnable>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
