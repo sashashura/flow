@@ -3,6 +3,10 @@ package com.vaadin.flow.spring.test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.stream.Collectors;
+
+import org.junit.After;
+import org.openqa.selenium.logging.LogEntry;
 
 import com.vaadin.flow.testutil.ChromeBrowserTest;
 
@@ -35,6 +39,15 @@ public abstract class AbstractSpringTest extends ChromeBrowserTest {
         } else {
             return "";
         }
+    }
+
+    @After
+    public void dumpBrowserConsoleLogs() {
+        System.out.println(getLogEntries(java.util.logging.Level.ALL).stream()
+                .map(LogEntry::toString)
+                .collect(Collectors.joining("\n",
+                        "===============================  DUMP Browser logs:\n",
+                        "\n\n")));
     }
 
 }
