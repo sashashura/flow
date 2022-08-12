@@ -32,12 +32,6 @@
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-test-spring-common</artifactId>
             <version>${project.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.vaadin</groupId>
-                    <artifactId>vaadin-core</artifactId>
-                </exclusion>
-            </exclusions>            
         </dependency>
 
         <dependency>
